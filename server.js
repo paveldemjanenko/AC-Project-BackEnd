@@ -7,6 +7,7 @@ import cors from 'cors';
 import './utils/dotenv';
 import auth from './routes/authRoute';
 import user from './routes/userRoute';
+import products from './routes/productRoute';
 import defaultErrorHandler from './middlewares/defaultErrorHandler';
 import authenticate from './middlewares/authenticate';
 
@@ -42,7 +43,9 @@ app.use(
 
 app.use(`/api/v${process.env.API_VERSION}/auth`, auth);
 app.use(`/api/v${process.env.API_VERSION}/users`, authenticate, user);
+app.use(`/api/v${process.env.API_VERSION}/products`, products);
 
+app.use('/data', express.static('data'));
 app.use(defaultErrorHandler);
 
 const host = process.env[`HOST_${process.platform.toUpperCase()}`];
