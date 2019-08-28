@@ -17,7 +17,7 @@ const app = express();
 
 const MongoStore = mongo(session);
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI, {autoIndex: false});
 mongoose.connection.on('error', () => {
     logger.log('error', 'MongoDB connection error. Please make sure MongoDB is running.');
     process.exit();

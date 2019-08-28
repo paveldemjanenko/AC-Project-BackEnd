@@ -17,10 +17,10 @@ const productSchema = new mongoose.Schema(
 
 const ProductModel = mongoose.model('Product', productSchema);
 
-const save = async model => new ProductModel(model).save();
+// const save = async model => new ProductModel(model).save();
 
 const getProductById = async _id => ProductModel.findById({ _id });
 
 const getRandomProducts = async () => ProductModel.find();
 
-export { save, getRandomProducts, getProductById };
+export { getRandomProducts, getProductById };
